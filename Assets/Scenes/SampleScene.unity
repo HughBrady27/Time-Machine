@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 1443508040}
   - component: {fileID: 1443508042}
   m_Layer: 0
-  m_Name: dirtBlock
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 1470961476}
   - component: {fileID: 1470961478}
   m_Layer: 0
-  m_Name: dirtBlock (1)
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -403,8 +403,9 @@ GameObject:
   - component: {fileID: 1936702520}
   - component: {fileID: 1936702522}
   - component: {fileID: 1936702523}
+  - component: {fileID: 1936702524}
   m_Layer: 0
-  m_Name: playerTemplate
+  m_Name: player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,7 +464,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1936702519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.667, y: 1.016, z: 0}
+  m_LocalPosition: {x: -4.58, y: 4.03, z: 0}
   m_LocalScale: {x: 0.38593286, y: 0.5787287, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -514,3 +515,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.53, y: 3.56}
   m_EdgeRadius: 0
+--- !u!114 &1936702524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1936702519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378c06cbda8baf84ba9a0562e6f9245c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 10
+  facingRight: 1
+  moveInput: 0
+  playerJumpForce: 200
