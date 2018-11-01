@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\CameraSystem.cs" />
      <Compile Include="Assets\Player_Movement.cs" />
+     <Compile Include="Assets\Timer.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Hughballs/Documents/College/Year4/MobApp3/Time Machine/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
