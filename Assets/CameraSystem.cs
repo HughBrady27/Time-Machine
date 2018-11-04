@@ -7,10 +7,10 @@ public class CameraSystem : MonoBehaviour {
     private GameObject player;
 
     // These vars define the boundaries that the camera can navigate to
-    public float xMin = -2;
+    public float xMin = 0;
     public float xMax = 100;
-    public float yMin;
-    public float yMax;
+    public float yMin = -5;
+    public float yMax = 50;
 
     // Use this for initialization
     void Start () {
