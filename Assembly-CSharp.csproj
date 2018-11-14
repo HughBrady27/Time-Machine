@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CameraSystem.cs" />
+     <Compile Include="Assets\MainMenu.cs" />
      <Compile Include="Assets\Player_Health.cs" />
      <Compile Include="Assets\Player_Movement.cs" />
      <Compile Include="Assets\Timer.cs" />

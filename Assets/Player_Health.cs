@@ -23,6 +23,6 @@ public class Player_Health : MonoBehaviour {
     IEnumerator Die ()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Level1");
     }
 }
