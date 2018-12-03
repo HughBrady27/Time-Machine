@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Player_Health : MonoBehaviour {
 
-	void Start () {
-        isDead = false;
-	}
-
     void Update() {
         if (gameObject.transform.position.y < -7) {
             Die();

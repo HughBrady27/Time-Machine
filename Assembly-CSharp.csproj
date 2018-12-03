@@ -55,7 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraSystem.cs" />
      <Compile Include="Assets\Scripts\Game_Over.cs" />
-     <Compile Include="Assets\Scripts\GameOverScreen.cs" />
+     <Compile Include="Assets\Scripts\Goon_Behaviour.cs" />
      <Compile Include="Assets\Scripts\Main_Menu.cs" />
      <Compile Include="Assets\Scripts\Player_Health.cs" />
      <Compile Include="Assets\Scripts\Player_Movement.cs" />

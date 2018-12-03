@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverScreen : MonoBehaviour {
+public class Game_Over : MonoBehaviour {
 
     public void Restart()
     {
@@ -13,7 +13,7 @@ public class GameOverScreen : MonoBehaviour {
     public void MainMenu()
     {
         Debug.Log("Quitting to main menu");
-        SceneManager.LoadScene("Main_Menu");
+        SceneManager.LoadScene("MainMenu");
     }
 
 }

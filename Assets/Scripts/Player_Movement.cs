@@ -10,7 +10,9 @@ public class Player_Movement : MonoBehaviour
     public float moveInput;
 
     // JUMPING VARS
-    public int playerJumpForce = 200;
+    public int playerJumpForce = 300;
+    public bool isGrounded = false;
+    public bool doubleJump = true;
 
     // Update is called once per frame
     void Update()
@@ -22,8 +24,13 @@ public class Player_Movement : MonoBehaviour
     {
         // CONTROLS
         moveInput = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && isGrounded == true)
         {
+            Jump();
+        } 
+        else if (Input.GetButtonDown("Jump") && isGrounded != true && doubleJump == true)
+        {
+            doubleJump = false;
             Jump();
         }
 
@@ -52,6 +59,14 @@ public class Player_Movement : MonoBehaviour
     void Jump()
     {
         // JUMPING CODE
+        isGrounded = false;
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpForce);
+    }
+
+    void OnCollisionEnter2D(Collision2D col) {
+        if (col.gameObject.tag == "ground") {
+            doubleJump = true;
+            isGrounded = true;
+        }
     }
 }
