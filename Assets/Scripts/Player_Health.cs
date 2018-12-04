@@ -5,15 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Player_Health : MonoBehaviour {
 
+//    public int playerHP = 3;
+
     void Update() {
-        if (gameObject.transform.position.y < -7) {
-            Die();
+        if (gameObject.transform.position.y < -15) {
+            SceneManager.LoadScene("GameOver");
         }
 	}
-
-    IEnumerator Die ()
-    {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("GameOver");
-    }
 }

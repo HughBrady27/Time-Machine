@@ -9,7 +9,7 @@ public class CameraSystem : MonoBehaviour {
     // These vars define the boundaries that the camera can navigate to
     public float xMin = 0;
     public float xMax = 100;
-    public float yMin = -5;
+    public float yMin = 0;
     public float yMax = 50;
 
     // Use this for initialization

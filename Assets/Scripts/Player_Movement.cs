@@ -77,6 +77,7 @@ public class Player_Movement : MonoBehaviour
         if (hit != null && hit.collider != null && hit.distance < 2 && hit.collider.tag == "Enemy") {
             Debug.Log("jumped on enemy");
             GetComponent<Rigidbody2D>().AddForce (Vector2.up * 1000);
+            hit.collider.gameObject.GetComponent<Rigidbody2D>().gravityScale = 6;
             hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             hit.collider.gameObject.GetComponent<Goon_Behaviour>().enabled = false;
         }

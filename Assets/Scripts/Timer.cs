@@ -23,13 +23,13 @@ public class Timer : MonoBehaviour {
 
 	}
 
-    
     // IF PLAYER COLLIDES WITH DELOREAN OR MAGAZINE
     void OnTriggerEnter2D (Collider2D trig) {
-        if (trig.gameObject.name == "Delorean") {
+        Debug.Log("Trigger");
+        if (trig.gameObject.tag == "Delorean") {
             CountScore();
         }
-        if (trig.gameObject.name == "Magazine") {
+        if (trig.gameObject.tag == "Magazine") {
             score += 50;
             Destroy (trig.gameObject);
         }
@@ -38,7 +38,6 @@ public class Timer : MonoBehaviour {
 
     void CountScore() {
         score = score + (int)(timeLeft * 10);
-        Debug.Log("Score: " + score);
     }
 
 

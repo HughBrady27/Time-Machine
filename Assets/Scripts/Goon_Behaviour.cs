@@ -14,6 +14,11 @@ public class Goon_Behaviour : MonoBehaviour {
 		if (hit.distance < 0.7f)
 		{
 			FlipGoon();
+
+			// Kill Player if he touches side of goon
+			if (hit.collider.tag == "Player") {
+				Destroy (hit.collider.gameObject);
+			}
 		}
 	}
 
