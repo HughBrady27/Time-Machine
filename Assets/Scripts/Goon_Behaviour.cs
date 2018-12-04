@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class Goon_Behaviour : MonoBehaviour {
 
-	public int GoonSpeed = 1;
+	public int GoonSpeed = 3;
 	public int xMoveDirection;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

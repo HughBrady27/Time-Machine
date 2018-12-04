@@ -18,6 +18,7 @@ public class Player_Movement : MonoBehaviour
     void Update()
     {
         PlayerMove();
+        PlayerRaycast();
     }
 
     void PlayerMove()
@@ -64,9 +65,19 @@ public class Player_Movement : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-        if (col.gameObject.tag == "ground") {
+        if (col.gameObject.tag == "Ground") {
+            Debug.Log("landed on ground");
             doubleJump = true;
             isGrounded = true;
         }
+    }
+
+    void PlayerRaycast() {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
+        if (hit.distance < 1.1f && hit.collider.tag == "Enemy") {
+        //    Debug.Log("touching enemy");
+            GetComponent<Rigidbody2D>().AddForce (Vector2.up * 1000);
+        }
+       
     }
 }

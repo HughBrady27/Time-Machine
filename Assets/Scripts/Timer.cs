@@ -2,20 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour {
 
-    public float timeLeft = 300;
+    private float timeLeft = 50;
+    public int score = 0;
     public GameObject timeUI;
-    	
+    public GameObject scoreUI;
+ 
 	// Update is called once per frame
 	void Update () {
         timeLeft -= Time.deltaTime;
         timeUI.gameObject.GetComponent<Text>().text = "Time: " + (int) timeLeft;
-
+        scoreUI.gameObject.GetComponent<Text>().text = "Score: " + score;
         if (timeLeft < 0.1f)
         {
-            // Lose condition
+            SceneManager.LoadScene("GameOver");
         }
+
 	}
+
+    
+    // IF PLAYER COLLIDES WITH DELOREAN OR MAGAZINE
+    void OnTriggerEnter2D (Collider2D trig) {
+        if (trig.gameObject.name == "Delorean") {
+            CountScore();
+        }
+        if (trig.gameObject.name == "Magazine") {
+            score += 50;
+            Destroy (trig.gameObject);
+        }
+
+    }
+
+    void CountScore() {
+        score = score + (int)(timeLeft * 10);
+        Debug.Log("Score: " + score);
+    }
+
+
 }

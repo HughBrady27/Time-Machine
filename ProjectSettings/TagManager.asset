@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ground
-  - g
+  - Ground
+  - Magazine
+  - Delorean
+  - Enemy
   layers:
   - Default
   - TransparentFX
