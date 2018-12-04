@@ -10,7 +10,7 @@ public class Player_Movement : MonoBehaviour
     public float moveInput;
 
     // JUMPING VARS
-    public int playerJumpForce = 300;
+    public int playerJumpForce = 1250;
     public bool isGrounded = false;
     public bool doubleJump = true;
 
@@ -74,9 +74,11 @@ public class Player_Movement : MonoBehaviour
 
     void PlayerRaycast() {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
-        if (hit.distance < 1.1f && hit.collider.tag == "Enemy") {
-        //    Debug.Log("touching enemy");
+        if (hit != null && hit.collider != null && hit.distance < 2 && hit.collider.tag == "Enemy") {
+            Debug.Log("jumped on enemy");
             GetComponent<Rigidbody2D>().AddForce (Vector2.up * 1000);
+            hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            hit.collider.gameObject.GetComponent<Goon_Behaviour>().enabled = false;
         }
        
     }
