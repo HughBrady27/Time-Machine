@@ -10,7 +10,7 @@ public class Player_Movement : MonoBehaviour
     public float moveInput;
 
     // JUMPING VARS
-    public int playerJumpForce = 1250;
+    public int playerJumpForce = 1000;
     public bool isGrounded = false;
     public bool doubleJump = true;
 
@@ -25,23 +25,20 @@ public class Player_Movement : MonoBehaviour
     {
         // CONTROLS
         moveInput = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Jump") && isGrounded == true)
-        {
+        
+        if (Input.GetButtonDown("Jump") && isGrounded == true) {
             Jump();
         } 
-        else if (Input.GetButtonDown("Jump") && isGrounded != true && doubleJump == true)
-        {
+        else if (Input.GetButtonDown("Jump") && isGrounded != true && doubleJump == true) {
             doubleJump = false;
             Jump();
         }
 
         // FACING
-        if (moveInput < 0.0f && facingRight == true)
-        {
+        if (moveInput < 0.0f && facingRight == true) {
             FlipPlayer();
         }
-        else if (moveInput > 0.0f && facingRight == false)
-        {
+        else if (moveInput > 0.0f && facingRight == false) {
             FlipPlayer();
         }
 
@@ -57,30 +54,31 @@ public class Player_Movement : MonoBehaviour
         transform.localScale = localScale;
     }
 
+
     void Jump()
-    {
-        // JUMPING CODE
-        isGrounded = false;
+    {        
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpForce);
     }
 
-    void OnCollisionEnter2D(Collision2D col) {
-        if (col.gameObject.tag == "Ground") {
-            Debug.Log("landed on ground");
-            doubleJump = true;
-            isGrounded = true;
-        }
-    }
-
+    // Casting a ray down from the player, checking for enemies or the ground.
     void PlayerRaycast() {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
-        if (hit != null && hit.collider != null && hit.distance < 2 && hit.collider.tag == "Enemy") {
+        
+        if (hit != null && hit.collider != null && hit.distance < 1.3 && hit.collider.tag == "Ground") {
+            Debug.Log("landed on ground");
+            isGrounded = true;
+            doubleJump = true;
+        }
+        
+        if (hit != null && hit.collider != null && hit.distance < 1.3 && hit.collider.tag == "Enemy") {
             Debug.Log("jumped on enemy");
             GetComponent<Rigidbody2D>().AddForce (Vector2.up * 1000);
             hit.collider.gameObject.GetComponent<Rigidbody2D>().gravityScale = 6;
             hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             hit.collider.gameObject.GetComponent<Goon_Behaviour>().enabled = false;
         }
-       
+        else {
+            isGrounded = false;
+        }
     }
 }
