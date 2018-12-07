@@ -58,10 +58,11 @@
      <Compile Include="Assets\Scripts\Goon_Behaviour.cs" />
      <Compile Include="Assets\Scripts\Goon_Health.cs" />
      <Compile Include="Assets\Scripts\Main_Menu.cs" />
+     <Compile Include="Assets\Scripts\Music.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\Player_Health.cs" />
      <Compile Include="Assets\Scripts\Player_Movement.cs" />
-     <Compile Include="Assets\Scripts\Timer.cs" />
+     <Compile Include="Assets\Scripts\ScoreSystem.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>C:/Users/Hughballs/Documents/College/Year4/MobApp3/Time Machine/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
