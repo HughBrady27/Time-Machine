@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Player_Movement : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class Player_Movement : MonoBehaviour
     public float moveInput;
 
     // JUMPING VARS
-    public int playerJumpForce = 1000;
+    public int playerJumpForce = 800;
     public bool isGrounded = false;
     public bool doubleJump = true;
+    public float distToFoot = 1.6f;
+    [SerializeField]
+    private Rigidbody2D rb;
 
     // Update is called once per frame
     void Update()
@@ -25,7 +29,7 @@ public class Player_Movement : MonoBehaviour
     {
         // CONTROLS
         moveInput = Input.GetAxis("Horizontal");
-        
+
         if (Input.GetButtonDown("Jump") && isGrounded == true) {
             Jump();
         } 
@@ -42,8 +46,16 @@ public class Player_Movement : MonoBehaviour
             FlipPlayer();
         }
 
-        // PHYSICS
-        gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(moveInput * playerSpeed, gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        // Move
+        rb.velocity = new Vector2(moveInput * playerSpeed, rb.velocity.y);
+    }
+
+    void MoveLeft() {
+        
+    }
+
+    void MoveRight() {
+
     }
 
     void FlipPlayer()
@@ -54,7 +66,6 @@ public class Player_Movement : MonoBehaviour
         transform.localScale = localScale;
     }
 
-
     void Jump()
     {        
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * playerJumpForce);
@@ -64,21 +75,21 @@ public class Player_Movement : MonoBehaviour
     void PlayerRaycast() {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
         
-        if (hit != null && hit.collider != null && hit.distance < 1.3 && hit.collider.tag == "Ground") {
-            Debug.Log("landed on ground");
+        if (hit.collider != null && hit.distance < distToFoot && hit.collider.tag == "Ground") {
             isGrounded = true;
             doubleJump = true;
         }
+        else {
+            isGrounded = false;
+        }
         
-        if (hit != null && hit.collider != null && hit.distance < 1.3 && hit.collider.tag == "Enemy") {
-            Debug.Log("jumped on enemy");
+        if (hit.collider != null && hit.distance < distToFoot && hit.collider.tag == "Enemy") {
+            doubleJump = true;
             GetComponent<Rigidbody2D>().AddForce (Vector2.up * 1000);
             hit.collider.gameObject.GetComponent<Rigidbody2D>().gravityScale = 6;
             hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             hit.collider.gameObject.GetComponent<Goon_Behaviour>().enabled = false;
         }
-        else {
-            isGrounded = false;
-        }
+       
     }
 }

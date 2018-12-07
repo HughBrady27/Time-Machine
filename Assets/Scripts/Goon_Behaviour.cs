@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Goon_Behaviour : MonoBehaviour {
 
@@ -16,8 +17,13 @@ public class Goon_Behaviour : MonoBehaviour {
 			FlipGoon();
 
 			// Kill Player if he touches side of goon
-			if (hit.collider.tag == "Player") {
-				Destroy (hit.collider.gameObject);
+			try {
+				if (hit.collider.tag == "Player") {
+					SceneManager.LoadScene("GameOver");
+				}
+			}
+			catch {
+				Debug.Log("Player not found");
 			}
 		}
 	}
